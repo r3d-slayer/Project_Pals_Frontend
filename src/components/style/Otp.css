@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@500&display=swap');
+
+.otp-main-container input{
+    margin: 15px 0px;
+    font-size: 50px;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #74A8C5;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.otp-main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.otp-first-main-container button{
+    margin: 8px 0px;
+    width: 220px;
+    height: 36px;
+    color:white;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #74A8C5;
+}
+
+.otp-first-container p{
+    color: #74A8C5;
+    font-size: 20px;
+}
+.otp-resend a{
+    color: #74A8C5;
+}
+.otp-resend {
+    color: #74A8C5;
+}
+
+#otp-account{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
+.otp-second-container{
+    color: #74A8C5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.otp-second-container input{
+    background-color: #74A8C5;
+    cursor: pointer;
+}
+
+.otp-signup:hover{
+    background-color: #4495c0;
+}

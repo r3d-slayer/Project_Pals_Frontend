@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './style/Form.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
-const Form = () => {
+const Form = (props) => {
     const [credstate, setcredstate] = useState({ email: '', username: '', password: '', password2: '', first_name: '', last_name: '' })
 
     const changed = (e) => {
@@ -11,11 +11,10 @@ const Form = () => {
         })
         console.log(e.target.name);
     }
-    let navigate = useNavigate();
 
-        const datasend = async (e) => {
-            try {
-            e.preventDefault();
+    const datasend = async (e) => {
+        e.preventDefault();
+
             let response = await fetch('https://adarsh8266.pythonanywhere.com/api/accounts/register/', {
                 method: 'POST',
                 headers: {
@@ -34,34 +33,43 @@ const Form = () => {
             let data = await response.json();
             console.log(data);
             localStorage.setItem('token', data.access);
-            navigate('/');
-        
-    } catch (error) {
-        console.error(error.message);
+            props.onSubmit();
+            localStorage.setItem('email',credstate.email);
     }
-}
 
+    const checked = () =>{
+        if(credstate.email==='' || credstate.username==='' || credstate.password==='' || credstate.password2==='' || credstate.first_name===''){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    // const handleClick = () => {
+
+    // }
     return (
         <div className='form-main-container'>
             <form onSubmit={datasend}>
                 <div className="form-container">
                     <label htmlFor="account" id='account'>Create account</label>
-                    <input type="text" name='first_name' className="firstname" onChange={changed} placeholder='First Name' />
-                    <input type="text" name='last_name' className="firstname" onChange={changed} placeholder='Last Name' />
-                    <input type="text" name='username' className="username" onChange={changed} placeholder='Username' />
-                    <input type="text" name='email' className="email" onChange={changed} placeholder='Email' />
-                    <input type="password" name='password' className="password" onChange={changed} placeholder='Password' />
+                    <input type="text" name='first_name' className="firstname"  onChange={changed} placeholder='First Name' />
+                    <input type="text" name='last_name' className="firstname"  onChange={changed} placeholder='Last Name' />
+                    <input type="text" name='username' className="username"  onChange={changed} placeholder='Username' />
+                    <input type="text" name='email' className="email"  onChange={changed} placeholder='Email' />
+                    <input type="password" name='password'  className="password" onChange={changed} placeholder='Password' />
                     <input type="password" name='password2' className="confirmpassword" onChange={changed} placeholder='Confirm Password' />
 
-                    <button type="submit" className="form-submit">Submit</button>
-                    <div className="refer">
+                    <button type="submit" disabled={checked()} className="form-submit">Next</button>
+                    {/* <div className="refer">
                         <a id='refer' href="#">
                             <div className="link">
                                 Already have an account?
                                 <a id='link' to="#">Log in</a>
                             </div>
                         </a>
-                    </div>
+                    </div> */}
 
                 </div>
 

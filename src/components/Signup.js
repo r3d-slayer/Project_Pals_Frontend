@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style/Signup.css'
 import Form from './Form'
 import realimage from './style/image.png'
+import Otp from './Otp'
+
 
 const Signup = () => {
+
+  // const [show,setshow] = useState(false)
+
+  // const Show=(props)=>{
+
+  const [show,setshow] = useState(true)
+
+  const toggled = () =>{
+    setshow(!show);
+  }
 
   return (
     <div className='big-container'>
@@ -20,9 +32,12 @@ const Signup = () => {
             <img src={realimage} alt="A 3D Art" />
           </ul>
         </div>
+ 
         <div className="content">
-          <Form/>
+        {show?<Form onSubmit={toggled}/>:<Otp onSubmit={toggled}/>}
+    
         </div>
+
       </div>
     </div>
   )

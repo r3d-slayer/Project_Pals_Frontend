@@ -3,6 +3,7 @@ import style from './style/Navbar.css'
 import { useLocation } from 'react-router-dom';
 import realimage from './style/PartnurUp.png'
 import searchbtn from './style/search-interface-symbol.png'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     // style={location.pathname === '/signup' ? { display: 'none' } : style}
@@ -32,7 +33,7 @@ const Navbar = () => {
                         Contact Us
                     </li>
                     <li className='nav-signup'>
-                        <button>Sign Up</button>
+                        <Link to={'/signup'}><button>Sign Up</button></Link>
                     </li>
                 </ul>
 

@@ -24,12 +24,12 @@
     border-bottom: 1px solid gray;
     outline: none;
     text-align: baseline;
-    margin-bottom: 26px;
+    margin-bottom: 20px;
 }
 
 
-.form-container button{
-    margin-top: 26px;
+.form-main-container button{
+    margin-top: 5px;
     background-color: #5ea3c9;
     color: white;
     font-size: 24px;
@@ -44,11 +44,11 @@
 #account{
     font-size: 40px;
     font-weight: 500;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .refer{
-    margin-top: 8px;
+    margin-top: 3px;
 }
 .refer a{
     color:rgb(100, 99, 99);

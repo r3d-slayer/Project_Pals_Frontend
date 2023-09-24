@@ -1,22 +1,27 @@
 import React, { useState } from 'react'
 import './style/Otp.css'
 import OtpInput from 'react-otp-input';
+import { useNavigate } from 'react-router-dom';
 
 const Otp = (props) => {
+  let navigate = useNavigate();
   const [check, setcheck] = useState(true)
   const handleClick = () => {
-    props.onSubmit();
+    props.onBack();
   }
 
   const otpdata = async () => {
     let response = await fetch('https://adarsh8266.pythonanywhere.com/api/accounts/verify-otp/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: localStorage.getItem('email'), otp: otp })
+      body: JSON.stringify({ email: sessionStorage.getItem('email'), otp: otp })
     })
 
     let datarecieved = await response.json();
     console.log(datarecieved.msg)
+    if(datarecieved.msg === 'email verified'){
+      navigate('/post')
+    }
   }
 
   const toggle = () => {

@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.alert-main-container{
+    font-size: large;
+    padding: 7px;
+    width: 99vw;
+    height: 26px;
+    background-color: lightgreen;
+    color: black;
+    overflow: hidden;
+}

@@ -25,7 +25,7 @@ const Home = () => {
             </li>
             <br />
             <li>
-              <Link className='getstarted' to={'/signup/form'}><button>Get Started</button></Link>
+              <Link className='getstarted' to={'/signup'}><button>Get Started</button></Link>
             </li>
           </ul>
         </div>

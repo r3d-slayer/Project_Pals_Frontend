@@ -32,9 +32,9 @@ const Form = (props) => {
             console.log(credstate.email);
             let data = await response.json();
             console.log(data);
-            localStorage.setItem('token', data.access);
-            props.onSubmit();
-            localStorage.setItem('email',credstate.email);
+            sessionStorage.setItem('token', data.access);
+            props.onNext();
+            sessionStorage.setItem('email',credstate.email);
     }
 
     const checked = () =>{
@@ -46,9 +46,9 @@ const Form = (props) => {
         }
     }
 
-    // const handleClick = () => {
-
-    // }
+    const handleClick = () => {
+        props.onBack();
+    }
     return (
         <div className='form-main-container'>
             <form onSubmit={datasend}>
@@ -58,6 +58,8 @@ const Form = (props) => {
                     <input type="text" name='last_name' className="firstname"  onChange={changed} placeholder='Last Name' />
                     <input type="text" name='username' className="username"  onChange={changed} placeholder='Username' />
                     <input type="text" name='email' className="email"  onChange={changed} placeholder='Email' />
+                    <input type="text" name='collegename' className="Collegename"  placeholder='College Name' />
+                    <input type="text" name='phonenumber' className="Phonenumber"  placeholder='Phone Number' />
                     <input type="password" name='password'  className="password" onChange={changed} placeholder='Password' />
                     <input type="password" name='password2' className="confirmpassword" onChange={changed} placeholder='Confirm Password' />
 
@@ -72,6 +74,7 @@ const Form = (props) => {
                     </div> */}
 
                 </div>
+                    <button className="form-submit" onClick={handleClick}>Back</button>
 
             </form>
         </div>

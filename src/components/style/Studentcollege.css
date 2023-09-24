@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.stdclg-main-container{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.stdclg-secondmain-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.stdclg-first-container ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+}
+
+.stdclg-second-container ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+}
+
+.stdclg-first-container img {
+    height: 220px;
+    width: 235px;
+}
+
+.stdclg-second-container img {
+    width: 330px;
+    height: 220px;
+}
+
+.stdclg-main-container button {
+    margin-top: 26px;
+    background-color: #5ea3c9;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    width: 150px;
+    /* width: 100%; */
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+#Or {
+    font-size:30px;
+}
+
+#signupas{
+    margin-bottom: 50px;
+    margin-right: 50px;
+    font-size: 40px;
+}

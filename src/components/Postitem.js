@@ -21,7 +21,7 @@ const Postitem = (props) => {
 
                             {/* <div className="postitem-userlist"> */}
                                 <ul>
-                                    <li id='name'> <div className="circle"></div>Adarsh</li>
+                                    <li id='name'> <div className="circle"></div>{post.username}</li>
                                     <li className='connect-button'><button onClick={clicked}>Connect</button></li>
                                 </ul>
                             {/* </div> */}

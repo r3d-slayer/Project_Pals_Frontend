@@ -5,23 +5,23 @@ import addimage from './style/add-on-icon-29.jpg'
 import Postitem from './Postitem';
 
 const Post = (props) => {
-//   const initialposts = [
-// {username: 'adarsh', id: 1, title: 'rerg', category: 'ergrggsdfbcs', description: 'projecbfb rfger egerglt', }, 
-// {username: 'adarsh1o1', 'id': 2, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', }, 
-// {username: 'adarsh1o1', id: 3, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', },
+  //   const initialposts = [
+  // {username: 'adarsh', id: 1, title: 'rerg', category: 'ergrggsdfbcs', description: 'projecbfb rfger egerglt', }, 
+  // {username: 'adarsh1o1', 'id': 2, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', }, 
+  // {username: 'adarsh1o1', id: 3, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', },
 
-// {username: 'adarsh1o1', id: 4, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', },
+  // {username: 'adarsh1o1', id: 4, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', },
 
-// {username: 'adarsh1o1', id: 5, title: 'wefweffwewwsdf', category: 'ergrggsefwewfw wefwe fwdfbcs', description: 'projecbfb fwefwefuiwhefuihwefwefwefewfwfrfger egerglt', },
+  // {username: 'adarsh1o1', id: 5, title: 'wefweffwewwsdf', category: 'ergrggsefwewfw wefwe fwdfbcs', description: 'projecbfb fwefwefuiwhefuihwefwefwefewfwfrfger egerglt', },
 
-// {username: 'adarsh1o1', id: 6, title: 'wefweffwewwsdf', category: 'ergrggsefwewfw wefwe fwdfbcs', description: 'projecbfb fwefwefuiwhefuihwefwefwefewfwfrfger egerglt',}]
-const initialposts = [];
+  // {username: 'adarsh1o1', id: 6, title: 'wefweffwewwsdf', category: 'ergrggsefwewfw wefwe fwdfbcs', description: 'projecbfb fwefwefuiwhefuihwefwefwefewfwfrfger egerglt',}]
+  const initialposts = [];
   const [posts, setposts] = useState(initialposts);
   const token = sessionStorage.getItem('token');
   const fetchallposts = async () => {
     let response = await fetch('http://adarsh8266.pythonanywhere.com/api/core/show-post/', {
       method: 'GET',
-      headers: {'Authorization': `Bearer ${token}`}
+      headers: { 'Authorization': `Bearer ${token}` }
     });
     let json = await response.json();
     // console.log(json)
@@ -86,9 +86,17 @@ const initialposts = [];
             {/* {posts.map((element) => {
                     return <Notesitem post={element} />
                 })} */}
-            {posts.map((element) => (
+            {/* {posts.map((element) => (
               <Postitem key={element.id} showalert={showalert} post={element} />
-            ))}
+            ))} */}
+
+            {Array.isArray(posts) && posts.length > 0 ? (
+              posts.map((element) => (
+                <Postitem key={element.id} showalert={props.showalert} post={element} />
+              ))
+            ) : (
+              <p>No posts available</p>
+            )}
 
 
           </div>

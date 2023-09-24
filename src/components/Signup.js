@@ -13,7 +13,6 @@ const Signup = () => {
 
 
   const [show, setshow] = useState(true)
-
   // const toggled = () =>{
   //   setshow(!show);
   // }

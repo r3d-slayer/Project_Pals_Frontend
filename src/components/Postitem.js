@@ -3,9 +3,22 @@ import './style/Postitem.css'
 
 const Postitem = (props) => {
     const {post} = props;
+    const token = sessionStorage.getItem('token');
 
-    const clicked = () =>{
-        // props.showalert1("email has been sent","success");
+    const clicked = async() =>{
+        // console.log(sessionStorage.getItem('email'));
+        // const emails = sessionStorage.getItem('email');
+        // props.showalert1("email has been sent","success");\
+
+        let response = await fetch('http://adarsh8266.pythonanywhere.com/api/core/connect/', {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`,'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: post.email
+            })
+          });
+          let json = await response.json();
+          console.log(json);
         props.showalert('Email has been sent', 'success')
     }
 

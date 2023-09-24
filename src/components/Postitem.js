@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style/Postitem.css'
 
 const Postitem = (props) => {
+    const {post} = props;
 
     const clicked = () =>{
         // props.showalert1("email has been sent","success");
@@ -31,8 +32,8 @@ const Postitem = (props) => {
                 {/* <hr /> */}
                 <div className="postitem-subsecond-container">
                     <ul>
-                        <li id='Title'>Web Designing</li>
-                        <li id='Description'>I am looking for a web designer to create an e-commerce website. I am open to any design style and would like to incoporate user registration as a specific feature. Skills and Experience of 1 year is Needed.</li>
+                        <li id='Title'>{post.title}</li>
+                        <li id='Description'>{post.description}</li>
                     </ul>
 
                 </div>

@@ -5,16 +5,37 @@ import addimage from './style/add-on-icon-29.jpg'
 import Postitem from './Postitem';
 
 const Post = (props) => {
-  //   const initialposts = [
-  // {username: 'adarsh', id: 1, title: 'rerg', category: 'ergrggsdfbcs', description: 'projecbfb rfger egerglt', }, 
-  // {username: 'adarsh1o1', 'id': 2, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', }, 
-  // {username: 'adarsh1o1', id: 3, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', },
+  const [credentials, setcredentials] = useState({ title: '', category: '', description: '' })
 
-  // {username: 'adarsh1o1', id: 4, title: 'wefwefsdf', category: 'ergrggsefwfwdfbcs', description: 'projecbfb fwefwefwefwefewfwfrfger egerglt', },
+  const changed = (e) => {
+    setcredentials({
+      ...credentials, [e.target.name]: e.target.value
+    })
+    console.log(e.target.name);
+  }
+  const token1 = sessionStorage.getItem('token');
+  const postdata = async (e) => {
+    e.preventDefault();
 
-  // {username: 'adarsh1o1', id: 5, title: 'wefweffwewwsdf', category: 'ergrggsefwewfw wefwe fwdfbcs', description: 'projecbfb fwefwefuiwhefuihwefwefwefewfwfrfger egerglt', },
+    let response = await fetch('http://adarsh8266.pythonanywhere.com/api/core/create-post/', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token1}`
+      },
+      body: JSON.stringify({
+        title: credentials.title
+        , category: credentials.category
+        , description: credentials.description
+      })
+    })
+    window.location.reload()
+    // let json = await response.json();
+    // console.log(json);
 
-  // {username: 'adarsh1o1', id: 6, title: 'wefweffwewwsdf', category: 'ergrggsefwewfw wefwe fwdfbcs', description: 'projecbfb fwefwefuiwhefuihwefwefwefewfwfrfger egerglt',}]
+  }
+
+
   const initialposts = [];
   const [posts, setposts] = useState(initialposts);
   const token = sessionStorage.getItem('token');
@@ -26,18 +47,10 @@ const Post = (props) => {
     let json = await response.json();
     // console.log(json)
     setposts(json);
-    // return json;
   }
   let navigate = useNavigate();
-
-  // const [alert1,setalert1] = useState(null)
   const { showalert } = props;
 
-  // window.addEventListener('load',()=>{
-  //   const json1 = fetchallposts();
-  //   setposts({...posts,json1})
-  //   console.log(posts);
-  // })
   useEffect(() => {
 
     if (sessionStorage.getItem('msg') !== "login success") {
@@ -45,7 +58,7 @@ const Post = (props) => {
     }
     fetchallposts();
 
-  },[])
+  }, [])
   return (
     <div className='post-main-container'>
       <div className="post-submain-container">
@@ -67,8 +80,8 @@ const Post = (props) => {
               <ul>
                 <li>
                   <div className="createpost-subsubsecond-container">
+                    <label htmlFor="greetings" id="createpost-heading">View Posts of Universities/Colleges</label>
                     <img src={addimage} alt="an addition sign" />
-                    <label htmlFor="greetings" id="createpost-heading">Create Posts</label>
 
                   </div>
                 </li>
@@ -83,13 +96,6 @@ const Post = (props) => {
 
         <div className="post-secondmain-container">
           <div className="all-posts">
-            {/* {posts.map((element) => {
-                    return <Notesitem post={element} />
-                })} */}
-            {/* {posts.map((element) => (
-              <Postitem key={element.id} showalert={showalert} post={element} />
-            ))} */}
-
             {Array.isArray(posts) && posts.length > 0 ? (
               posts.map((element) => (
                 <Postitem key={element.id} showalert={props.showalert} post={element} />
@@ -102,9 +108,44 @@ const Post = (props) => {
           </div>
         </div>
       </div>
-      {/* <div className="post-second-container">
-        Hello
-      </div> */}
+      <div className="post-second-container">
+        <label htmlFor="Create Post" id='create-post'>Create Post</label>
+        <div className="createpost-first-container">
+          <div className="createpost-second-container">
+            <ul>
+              <li>
+                <label htmlFor="Choose a Title">Choose a Title</label>
+              </li>
+              <li>
+                <input type="text" className='cp' onChange={changed} name="title" maxLength={50} />
+              </li>
+              <li>
+                <label htmlFor="Choose a Title">Choose your Category:</label>
+              </li>
+              <li>
+                <input type="text" className='cp' id='Category' onChange={changed} name="category" maxLength={60} />
+              </li>
+              <li>
+                <label htmlFor="Validation">Post validity(in days):</label>
+              </li>
+              <li>
+                <input type="number" className='cp' name="post-validation" id='post-validation' />
+              </li>
+              <li>
+                <label htmlFor="Description" >Write about your post:</label>
+              </li>
+              <li>
+                {/* <input type="text" className='cp' id='description' maxLength={250}/> */}
+                <textarea name="description" className='cp' id="description" onChange={changed} maxLength={250}></textarea>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="cp-button">
+
+          <button onClick={postdata}>Create Post</button>
+        </div>
+      </div>
     </div>
 
   )

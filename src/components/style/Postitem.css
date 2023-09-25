@@ -9,6 +9,7 @@
     margin-top: 20px;
     width: 60vw;
     border: 1px solid lightgrey;
+    /* border-right: none; */
 }
 
 .postitem-subfirst-container ul li{

@@ -29,24 +29,12 @@ const Signup = () => {
   };
 
   const step1 = () => {
-    // toggled();
     handleNext();
   }
   const step2 = () => {
     toggled();
     handleNext();
   }
-  // const [step,setstep] = useState(1);
-
-  // const steps = 3;
-  // const prev = () =>{
-  //   setstep(step-1);
-  // }
-  // const next = () =>{
-  //   setstep(step-1);
-  // }
-
-  // const totalsteps = steps;
 
   return (
     <div className='big-container'>

@@ -46,8 +46,8 @@
 }
 
 .post-subsubsecond-container img {
-    height: 32px;
-    margin-right: 8px;
+    height: 30px;
+    margin-left: 8px;
 }
 
 .createpost-subsubsecond-container {
@@ -79,7 +79,7 @@
 }
 
 #createpost-heading {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     /* color: #015B8E; */
     background: #B278FF;
@@ -92,12 +92,19 @@
 
 .post-second-container {
     /* overflow: hidden; */
+    border: 1px solid lightgrey;
     position:fixed;
     right: 0;
-    height: 100vh;
-    /* margin-right: 10px; */
-    width: 400px;
-    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    padding: 5px;
+    /* height: 77vh; */
+    margin-right: 10px;
+    /* width: 435px; */
+    width: 30vw;
+    /* background-color: blue; */
 }
 
 .post-secondmain-container{
@@ -107,4 +114,83 @@
     display: flex;
     justify-content: center;
     /* align-items:center ; */
+}
+
+.post-main-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .post-main-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+/* .createpost-first-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+} */
+
+.createpost-second-container ul{
+    /* width: 30vw; */
+    /* height: 100%; */
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+
+}
+
+#create-post{
+    font-size: 30px;
+    font-weight: 600;
+    background: -webkit-linear-gradient(to right, #B278FF 34%, #E900D9 100%);
+    background: -moz-linear-gradient(to right, #B278FF 34%, #E900D9 100%);
+    background: linear-gradient(to right, #B278FF 34%, #E900D9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cp{
+    /* padding: px; */
+    padding-left: 3px;
+    margin-bottom: 8px;
+    width: 26vw;
+    height: 30px;
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+
+#description{
+    padding: 3px;
+    font-size: 15px;
+    height: 130px;
+    max-width: 26vw;
+    min-width: 26vw;
+    resize: none;
+}
+
+
+.cp-button button{
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    /* padding-bottom: 10px; */
+    margin-bottom: 1px;
+    margin-top: 5px;
+    background:linear-gradient(131deg, #BBC2FF 34.90%, #52BCE9 100%);
+    color: #015B8E;
+    font-size: 18px;
+    font-weight: 600;
+    width: 100%;
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
 }

@@ -7,14 +7,15 @@ const Postitem = (props) => {
 
     const clicked = async() =>{
         // console.log(sessionStorage.getItem('email'));
+        const emails = post.email;
         // const emails = sessionStorage.getItem('email');
         // props.showalert1("email has been sent","success");\
-
+        console.log(post.email);
         let response = await fetch('http://adarsh8266.pythonanywhere.com/api/core/connect/', {
             method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}`,'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
             body: JSON.stringify({
-                email: post.email
+                email: emails
             })
           });
           let json = await response.json();

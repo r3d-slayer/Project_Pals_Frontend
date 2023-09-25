@@ -45,7 +45,7 @@ const Post = (props) => {
     }
     fetchallposts();
 
-  })
+  },[])
   return (
     <div className='post-main-container'>
       <div className="post-submain-container">
@@ -56,7 +56,7 @@ const Post = (props) => {
             <div className="post-subsubfirst-container">
               <ul>
                 <li>
-                  <label htmlFor="greetings" id="post-heading">Hello, Shivam</label>
+                  <label htmlFor="greetings" id="post-heading">Hello, {sessionStorage.getItem('username')}</label>
                 </li>
                 <li>
                   what's on your mind today?

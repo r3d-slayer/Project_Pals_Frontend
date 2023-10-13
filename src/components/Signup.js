@@ -3,7 +3,6 @@ import './style/Signup.css'
 import Form from './Form'
 import realimage from './style/image.png'
 import Otp from './Otp'
-import Student from './Student'
 import College from './College'
 import Studentcollege from './Studentcollege'
 

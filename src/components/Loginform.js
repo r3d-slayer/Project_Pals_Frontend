@@ -3,7 +3,7 @@ import './style/Loginform.css'
 import { useNavigate } from 'react-router-dom'
 
 const Loginform = (props) => {
-    const [loggedin,setloggedin] = useState(false);
+    // const [loggedin, setloggedin] = useState(false);
     let navigate = useNavigate();
     const [credstate, setcredstate] = useState({ email: '', password: '' })
 
@@ -17,27 +17,30 @@ const Loginform = (props) => {
     const datasend = async (e) => {
         e.preventDefault();
         sessionStorage.removeItem('token');
-        let response = await fetch('https://adarsh8266.pythonanywhere.com/api/accounts/login/', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: credstate.email
-                , password: credstate.password
+        try {
+            let response = await fetch('https://adarsh8266.pythonanywhere.com/api/accounts/login/', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: credstate.email
+                    , password: credstate.password
+                })
             })
-        })
-        console.log(credstate.email);
-        let data = await response.json();
-        console.log(data);
-        sessionStorage.setItem('token', data.token.access);
-        // props.onSubmit();
-        sessionStorage.setItem('msg',data.msg);
-        sessionStorage.setItem('username',data.username);
-        navigate('/post');
-        sessionStorage.setItem('email', credstate.email);
+            // console.log(credstate.email);
+            let data = await response.json();
+            // console.log(data);
+            sessionStorage.setItem('token', data.token.access);
+            // props.onSubmit();
+            sessionStorage.setItem('msg', data.msg);
+            sessionStorage.setItem('username', data.username);
+            navigate('/post');
+            sessionStorage.setItem('email', credstate.email);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
-
 
     return (
         <div>
@@ -49,14 +52,14 @@ const Loginform = (props) => {
                         <input type="password" name='password' className="password" onChange={changed} placeholder='Password' />
 
                         <button type="submit" className="loginform-submit">Next</button>
-                        {/* <div className="refer">
-                        <a id='refer' href="#">
+                        <div className="refer">
+                        <a id='refer' href="/signup">
                             <div className="link">
-                                Already have an account?
-                                <a id='link' to="#">Log in</a>
+                                Don't have an account?
+                                <a id='link' to="/signup">Signup</a>
                             </div>
                         </a>
-                    </div> */}
+                    </div>
 
                     </div>
 

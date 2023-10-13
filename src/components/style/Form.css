@@ -34,11 +34,18 @@
     color: white;
     font-size: 24px;
     font-weight: 500;
-    width: 100%;
+    width: 50%;
+    margin-right: 3px;
     height: 35px;
     cursor: pointer;
     border: none;
     border-radius: 10px;
+}
+
+.form-submit-button {
+    width: 100%;
+    display: flex;
+    margin-bottom: 4px;
 }
 
 #account{

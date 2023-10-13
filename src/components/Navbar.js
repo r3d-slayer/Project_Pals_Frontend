@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import style from './style/Navbar.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 import realimage from './style/PartnurUp.png'
@@ -20,7 +20,7 @@ const Navbar = () => {
                 <ul>
                     <img src={realimage} width={'50vw'} alt="an 3d art view" />
                     <li id='Logo'>
-                        PartnurUp
+                        Project Pals
                     </li>
                     <li>
                         <div className="nav-search"><input type="text" placeholder='Search Project Category....' /><img src={searchbtn} alt="button for searching" /></div>
@@ -37,25 +37,25 @@ const Navbar = () => {
                     <li>
                         Contact Us
                     </li>
-                    
-                        {!(sessionStorage.getItem('token')) ?
-                            <div className='signup-button'>
-                                <ul>
-                                    <li className="nav-signup">
-                                        <Link to={'/signup'}><button className='nav-signup'>Sign Up</button></Link>
-                                        </li>
-                                    <li className="nav-signup">
-                                        <Link to={'/login'}><button className='nav-signup'>Login</button></Link>
-                                        </li>
-                                </ul>
-                            </div>
 
-                            : (<li className='nav-signup'><button className='nav-signup' onClick={logout}>Logout</button></li>)}
-                
+                    {!(sessionStorage.getItem('token')) ?
+                        <div className='signup-button'>
+                            <ul>
+                                <li className="nav-signup">
+                                    <Link to={'/signup'}><button className='nav-signup'>Sign Up</button></Link>
+                                </li>
+                                <li className="nav-signup">
+                                    <Link to={'/login'}><button className='nav-signup'>Login</button></Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        : (<li className='nav-signup'><button className='nav-signup' onClick={logout}>Logout</button></li>)}
+
                 </ul>
             </div>
 
-            <hr />
+            {/* <hr /> */}
         </div>
     )
 }

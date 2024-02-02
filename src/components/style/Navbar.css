@@ -118,20 +118,21 @@
 }
 
 .your-account{
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
-    align-items: center;
-    width: 190px;
-    height: 35px;
+    align-items: center; */
+    /* width: 190px;
+    height: 35px; */
+    width:auto;
     color: #015B8E;
     font-weight: bold;
     font-size: 17px;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    background:linear-gradient(131deg, #BBC2FF 34.90%, #52BCE9 100%);
+    /* border-radius: 12px; */
+    /* border: none;
+    outline: none; */
+    /* background:linear-gradient(131deg, #BBC2FF 34.90%, #52BCE9 100%); */
 }
-.your-account button{
+/* .your-account button{
     width: 100px;
     height: 35px;
     color: #015B8E;
@@ -141,29 +142,140 @@
     border: none;
     outline: none;
     background:linear-gradient(131deg, #BBC2FF 34.90%, #52BCE9 100%);
+} */
+
+#options{
+    display: none;
 }
 
-@media screen and (min-width:768px) and (max-width:1024px){
+/* @media screen and (min-width:768px) and (max-width:991px){
     .nav-first-container ul li{
-        margin-right: 1.5vw;
+        margin-right: 1vw;
+        font-size: small;
     }
     .nav-signup button{
         border-radius: 10px;
     }
     .nav-search{
+        width:100%;
+    }
+} */
+
+@media (min-width: 992px) and (max-width: 1199.98px){
+    .nav-first-container ul li{
+        margin-right: 1vw;
+        font-size: medium;
+    }
+    .nav-signup button{
+        font-size: medium;
+        border-radius: 10px;
+    }
+    .nav-search{
         width: 300px;
+    }
+    #Logo{
+        font-size: 25px;
     }
 }
 
-@media screen and (min-width:1025px) and (max-width:1300px){
+@media  screen and (min-width: 1200px) and (max-width: 1300px){
     .nav-first-container ul li{
-        margin-right: 1vw;
+        margin-right: 1.2vw;
+        font-size: large;
     }
-    .nav-signup{
-        margin-right: 0vw;
-    
+    #Logo{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:990px){
+    .nav-first-container ul li{
+        margin-right:10px;
+    }
+    #options{
+        display: block;
+        font-size: large;
+    }
+    #Logo{
+        font-size: 20px;
+    }
+    #nav-logo{
+        width: 50px;
+    }
+    .nav-list{
+        display: none;
+    }
+    .nav-search{
+        width: 35vw;
+        /* margin-left: 20px; */
+    }
+    .nav-search input{
+        font-size: medium;
+    }
+    .nav-search img{
+        height: 18px;
     }
     .nav-signup button{
-        border-radius: 10px;
+        width: 80px;
+        font-size: medium;
+
+    }
+    .your-account{
+        font-size: 18px;
+    }
+    .nav-main-container .nav-first-container ul{
+        margin-left: 14px;
+    }
+}
+
+
+@media screen and (max-width:850px){
+    #Logo{
+        display: none;
+    }
+    .nav-first-container ul li{
+        margin-right:8px;
+    }
+    #nav-logo{
+        margin-right: 10px;
+    }
+    .nav-signup button{
+        width: 70px;
+        font-size: medium;
+    }
+    .your-account{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:602px){
+    .nav-signup{
+        display: none;
+    }
+    .nav-search{
+        width: 50vw;
+        margin-left: 15px;
+    }
+    .your-account{
+        display: none;
+    }
+    #nav-logo{
+        width: 45px;
+    }
+    #options{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:360px){
+    #options{
+        font-size: 18px;
+    }
+
+    .nav-search{
+        width: 40vw;
+        margin-left: 10px;
+    }
+     .nav-main-container .nav-first-container ul{
+        margin-left: 3px;
     }
 }

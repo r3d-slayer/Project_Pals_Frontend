@@ -63,33 +63,37 @@ const Navbar = () => {
         <div className='nav-main-container' style={location.pathname === '/' || location.pathname === '/post' || location.pathname === '/user-profile' ? style : { display: 'none' }} >
             <div className="nav-first-container">
                 <ul>
-                    <img src={realimage} width={'50vw'} alt="an 3d art view" />
+                    <img src={realimage} id='nav-logo' width={'50vw'} alt="an 3d art view" />
                     <li id='Logo'>
                         Project Pals
                     </li>
                     <li>
                         <div className="nav-search">
-                            <input type="text" placeholder='Search Project Category....' value={searchTerm} onChange={handleSearch}/>
+                            <input type="text" placeholder='Search... ' value={searchTerm} onChange={handleSearch}/>
                             <img src={searchbtn} alt="button for searching" />
                         </div>
                     </li>
                     <li>
 
                     </li>
-                    <li>
+                    
+                    
+                    <li className= 'nav-list'>
                         <Link to={'/'}>Home</Link>
                     </li>
-                    <li>
-                        About us
+                    <li className= 'nav-list'>
+                        <Link to={'/post'}>Posts</Link>
                     </li>
-                    <li>
+                    <li className= 'nav-list'>
                         <Link to={'/message'}>Messages</Link>
                     </li>
-
+                    <li id='options'>
+                        Options
+                    </li>
                     {!(sessionStorage.getItem('token')) ? (
                         <div className='signup-button'>
                             <ul>
-                                <li className="nav-signup">
+                                <li className="nav-signup ">
                                     <Link to={'/signup'}><button className='nav-signup'>Sign Up</button></Link>
                                 </li>
                                 <li className="nav-signup">
@@ -99,14 +103,16 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <ul>
-                        <li className='nav-signup'><button className='nav-signup' onClick={logout}>Logout</button></li>
                         <li className='your-account'>
                             Your account
-                            <div className='circle'></div>
+                            {/* <div className='circle'></div> */}
                         </li>
+                        <li className='nav-signup'><button className='nav-signup' onClick={logout}>Logout</button></li>
                         </ul>
 
                     )}
+                   
+
                 </ul>
             </div>
             <div className="search-modal">

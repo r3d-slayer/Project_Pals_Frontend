@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.account-image{
+    width: 115px;
+    height: 115px;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
+.profile-first-container{
+    display: flex;
+    /* justify-content:space-evenly; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+
+}
+
+.profile-details ul{
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+  color:#015B8E;
+    flex-direction: column;
+    list-style: none;
+}
+.profile-biodetails{
+    height: 99px;
+    width: 50%;
+}
+
+.profile-collegename ul{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    list-style: none;
+}
+
+.profile-bio{
+    font-size: medium;
+}
+
+.profile-details{
+    margin-left: 25px;
+}
+
+.profile-biodetails{
+    margin-left: 75px;
+    color: black;
+}
+
+#POSTS{
+    transform: translateX(8%);
+}

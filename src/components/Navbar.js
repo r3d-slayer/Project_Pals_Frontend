@@ -1,21 +1,66 @@
-import React from 'react'
-import style from './style/Navbar.css'
+import React, { useEffect, useState } from 'react';
+import style from './style/Navbar.css';
 import { useLocation, useNavigate } from 'react-router-dom';
-import realimage from './style/PartnurUp.png'
-import searchbtn from './style/search-interface-symbol.png'
-import { Link } from 'react-router-dom'
+import realimage from './style/PartnurUp.png';
+import searchbtn from './style/search-interface-symbol.png';
+import { Link } from 'react-router-dom';
+import Searchmodal from './Searchmodal';
 
 const Navbar = () => {
     let navigate = useNavigate();
     const logout = () => {
         sessionStorage.clear();
-        navigate('/')
-    }
-    // style={location.pathname === '/signup' ? { display: 'none' } : style}
+        navigate('/');
+    };
+
     let location = useLocation();
+    const [modalResult, setModalResult] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const token = sessionStorage.getItem('token');
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+
+                const response = await fetch(`http://adarsh826.pythonanywhere.com/api/accounts/search/${searchTerm}`, {
+                    method: 'GET',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+
+                if (Array.isArray(data) && data.length > 0) {
+                    setSearchResults(data);
+                    console.log(data)
+                    setModalResult(true);
+                } else {
+                    setSearchResults([]);
+                    setModalResult(false);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (searchTerm.trim() !== '') {
+            fetchData();
+            console.log(fetchData());
+        } else {
+            setSearchResults([]);
+            setModalResult(false);
+        }
+    }, [searchTerm, token]);
+
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+    };
 
     return (
-        <div className='nav-main-container' style={location.pathname === '/' || location.pathname === '/post' ? style : { display: 'none' }} >
+        <div className='nav-main-container' style={location.pathname === '/' || location.pathname === '/post' || location.pathname === '/user-profile' ? style : { display: 'none' }} >
             <div className="nav-first-container">
                 <ul>
                     <img src={realimage} width={'50vw'} alt="an 3d art view" />
@@ -23,22 +68,25 @@ const Navbar = () => {
                         Project Pals
                     </li>
                     <li>
-                        <div className="nav-search"><input type="text" placeholder='Search Project Category....' /><img src={searchbtn} alt="button for searching" /></div>
+                        <div className="nav-search">
+                            <input type="text" placeholder='Search Project Category....' value={searchTerm} onChange={handleSearch}/>
+                            <img src={searchbtn} alt="button for searching" />
+                        </div>
                     </li>
                     <li>
-                        Home
+
+                    </li>
+                    <li>
+                        <Link to={'/'}>Home</Link>
                     </li>
                     <li>
                         About us
                     </li>
                     <li>
-                        Blog
-                    </li>
-                    <li>
-                        Contact Us
+                        <Link to={'/message'}>Messages</Link>
                     </li>
 
-                    {!(sessionStorage.getItem('token')) ?
+                    {!(sessionStorage.getItem('token')) ? (
                         <div className='signup-button'>
                             <ul>
                                 <li className="nav-signup">
@@ -49,15 +97,26 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         </div>
+                    ) : (
+                        <ul>
+                        <li className='nav-signup'><button className='nav-signup' onClick={logout}>Logout</button></li>
+                        <li className='your-account'>
+                            Your account
+                            <div className='circle'></div>
+                        </li>
+                        </ul>
 
-                        : (<li className='nav-signup'><button className='nav-signup' onClick={logout}>Logout</button></li>)}
-
+                    )}
                 </ul>
             </div>
+            <div className="search-modal">
+            {searchResults.length > 0 && searchResults.map((element) => (
+        <Searchmodal key={element.id} modalResult={modalResult} realresult={element}/>
+    ))}
 
-            {/* <hr /> */}
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;

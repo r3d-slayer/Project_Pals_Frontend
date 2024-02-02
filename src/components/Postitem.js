@@ -1,15 +1,16 @@
 import React from 'react'
 import './style/Postitem.css'
+import { useNavigate } from 'react-router-dom';
 
 const Postitem = (props) => {
     const {post} = props;
     const token = sessionStorage.getItem('token');
-
+    const navigate = useNavigate();
     const clicked = async() =>{
 
         const emails = post.email;
         console.log(post.email);
-        let response = await fetch('http://adarsh8266.pythonanywhere.com/api/core/connect/', {
+        let response = await fetch('http://adarsh826.pythonanywhere.com/api/core/connect/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
             body: JSON.stringify({
@@ -18,7 +19,8 @@ const Postitem = (props) => {
           });
           let json = await response.json();
           console.log(json);
-        props.showalert('Email has been sent', 'success')
+        props.showalert('Email has been sent', 'success');
+        // navigate("/message")
     }
 
     return (

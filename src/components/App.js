@@ -7,7 +7,10 @@ import './style/App.css';
 import { Routes, Route, useLocation} from 'react-router-dom';
 import Post from './Post';
 import Alert from './Alert';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Chatapp from './Chatapp';
+import Searchmodal from './Searchmodal';
+import Profile from './Profile';
 
 function App() {
   const[alert,setalert] = useState(null);
@@ -22,24 +25,43 @@ function App() {
     },1500)
   }
 
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const delay = 1000; // 1 second
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, delay);
+
+    // Clean up the timeout when the component unmounts
+    return () => clearTimeout(timeout);
+  }, []);
+
   const location =  useLocation();
+
   return (
 
     <div className="App">
-      <Navbar/>
-      {/* {alert !== null && <Alert alert={alert} />}  */}
-      {alert ? (
+    <Navbar/>
+    {/* {alert !== null && <Alert alert={alert} />}  */}
+    {/* {alert ? (
           <Alert alert={alert} />
         ) : (
-        <div className="alert-placeholder" style={location.pathname ==='/post'?{height:'40px'}:{display:"none"}}/>
-        )}
-      <Routes>
-        <Route path='*' element={<Error/>}/>
-      <Route exact path='/' element={<Home/>}/>
-      <Route exact path='/signup' element={<Signup/>}/>
-      <Route exact path='/login' element={<Login/>}/>
-      <Route exact path='/post' element={<Post showalert={showalert}/>}/>
-      </Routes>
+          <div className="alert-placeholder" style={location.pathname ==='/post'?{height:'40px'}:{display:"none"}}/>
+        )} */}
+        
+
+        <Routes>
+          <Route path='*' element={<Error />} />
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/signup' element={<Signup />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/post' element={<Post />} />
+          <Route exact path='/user-profile' element={<Profile/>} />
+          {/* <Route exact path='/post' element={<Post showalert={setAlert} />} /> */}
+          <Route exact path='/message' element={<Chatapp />} />
+        </Routes>
     </div>
 
   );

@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.messagecomp-container{
+    width: 100%;
+    padding:10px;
+    padding-left:25px;
+    height: fit-content;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 18px;
+    overflow-y: auto;
+}  

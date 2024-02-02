@@ -17,7 +17,7 @@ const Post = (props) => {
   const postdata = async (e) => {
     e.preventDefault();
 
-    let response = await fetch('http://adarsh8266.pythonanywhere.com/api/core/create-post/', {
+    let response = await fetch('http://adarsh826.pythonanywhere.com/api/core/create-post/', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const Post = (props) => {
   const [posts, setposts] = useState(initialposts);
   const token = sessionStorage.getItem('token');
   const fetchallposts = async () => {
-    let response = await fetch('http://adarsh8266.pythonanywhere.com/api/core/show-post/', {
+    let response = await fetch('http://adarsh826.pythonanywhere.com/api/core/show-post/', {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -91,7 +91,7 @@ const Post = (props) => {
               </ul>
             </div>
           </div>
-        </div>
+ 
 
 
         <div className="post-secondmain-container">
@@ -106,6 +106,7 @@ const Post = (props) => {
 
 
           </div>
+        </div>
         </div>
       </div>
       <div className="post-second-container">

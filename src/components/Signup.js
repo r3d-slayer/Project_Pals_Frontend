@@ -47,7 +47,7 @@ const Signup = () => {
             <li>
               <p>Defining Success!!</p>
             </li>
-            <img src={realimage} alt="A 3D Art" />
+            <img src={realimage} loading="lazy" alt="A 3D Art" />
           </ul>
         </div>
 

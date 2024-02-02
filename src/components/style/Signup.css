@@ -9,6 +9,7 @@
     background-color: #74A8C5;
     overflow: hidden;
     /* overflow: auto; */
+    width: 100vw;
 }
 
 .container{

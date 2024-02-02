@@ -8,6 +8,8 @@
     padding: 20px;
     margin-top: 20px;
     width: 60vw;
+    /* max-width: 60vw;
+    min-width: 60vw; */
     border: 1px solid lightgrey;
     /* border-right: none; */
 }

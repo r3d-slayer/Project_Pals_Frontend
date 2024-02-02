@@ -163,7 +163,7 @@
 
 @media (min-width: 992px) and (max-width: 1199.98px){
     .nav-first-container ul li{
-        margin-right: 1vw;
+        margin-right: 0.8vw;
         font-size: medium;
     }
     .nav-signup button{
@@ -188,7 +188,7 @@
     }
 }
 
-@media screen and (max-width:990px){
+@media screen and (max-width:992px){
     .nav-first-container ul li{
         margin-right:10px;
     }

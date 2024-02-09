@@ -55,8 +55,9 @@ function App() {
 
         <Routes>
           <Route path='*' element={<Error />} />
-          <Route exact path='/aboutus' element={<About />} />
-          <Route exact path='/' element={<Home />} />
+          <Route  path='/aboutus' element={<About />} />
+          <Route path='/paartnup' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/login' element={<Login />} />
           

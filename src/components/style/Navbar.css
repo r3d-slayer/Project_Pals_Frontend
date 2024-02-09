@@ -118,8 +118,8 @@
 }
 
 .nav-first-container ul li{
-    margin-right: 1.5vw;
-    font-size: 22px;
+    margin-right: 1.1vw;
+    font-size: 20px;
 }
 
 .your-account{
@@ -185,7 +185,7 @@
 
 @media  screen and (min-width: 1200px) and (max-width: 1300px){
     .nav-first-container ul li{
-        margin-right: 1.2vw;
+        margin-right: 0.8vw;
         font-size: large;
     }
     #Logo{

@@ -66,7 +66,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className='nav-main-container' style={location.pathname === '/' || location.pathname === '/post' || location.pathname === '/user-profile' ? style : { display: 'none' }} >
+        <div className='nav-main-container' style={location.pathname === '/' || location.pathname === '/paartnup' || location.pathname === '/post' || location.pathname === '/user-profile' ? style : { display: 'none' }} >
             <div className="nav-first-container">
                 <ul>
                     <img src={realimage} id='nav-logo' width={'50vw'} alt="an 3d art view" />

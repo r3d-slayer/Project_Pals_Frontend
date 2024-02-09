@@ -3,7 +3,8 @@ import React from 'react'
 const College = () => {
   return (
     <div>
-      i am a college
+      <h2>Will be available soon</h2>
+      
     </div>
   )
 }

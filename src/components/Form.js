@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './style/Form.css'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Form = (props) => {
     const [credstate, setcredstate] = useState({ email: '', username: '', password: '', password2: '', first_name: '', last_name: '' })
@@ -38,12 +38,17 @@ const Form = (props) => {
                 props.onNext();
             }
             else{
-                console.log(data.error)
-                // alert(data)
+                // console.log(data.error)
+                alert(`Check your credentials;
+                Things to notice:
+                1.Email should be unique
+                2.Password must consists of 8 characters
+                `)
             }
 
             sessionStorage.setItem('email',credstate.email);            
         } catch (error) {
+            // alert('check your credentials')
             // console.log(error.message);
         }
 
@@ -80,14 +85,14 @@ const Form = (props) => {
                     <button className="form-submit" onClick={handleClick}>Back</button>
                     </div>
                     <div className="refer">
-                        <a id='refer' href="/login">
+                        <Link id='refer' to="/login">
                             <div className="link">
                                 Already have an account?
-                                <a id='link' href="/login">Log in</a>
+                                <Link id='link' to="/login">Log in</Link>
                             </div>
-                        </a>
+                        </Link>
                     </div>
-
+                    
                 </div>
 
             </form>

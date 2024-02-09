@@ -15,7 +15,7 @@
     top: 0;
     z-index: 12;
     background-color: white;
-    height: 85px;
+    height: 70px;
     min-height: 80px;
     font-family: 'Poppins', sans-serif;
 }
@@ -32,10 +32,10 @@
 }
 
 #Logo{
-    margin-left: 0rem;
+    margin-right: 25px;
     /* padding-left: 1.5rem; */
     color: #015B8E;
-    font-size: 30px;
+    font-size: 35px;
     font-weight:900;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .nav-search{
-    width: 400px;
+    width: 430px;
     height: 35px;
     display: flex;
     justify-content:left;
@@ -107,7 +107,7 @@
     position:absolute;
     /* left: 18.5%; */
     /* top:61%; */
-    transform: translate(270px,-10px);
+    transform: translate(320px,-10px);
     z-index:1000;
     max-height: 250px;
     overflow-x: hidden;
@@ -115,6 +115,11 @@
     border-radius: 15px;
 
     background-color: rgb(241, 244, 245);
+}
+
+.nav-first-container ul li{
+    margin-right: 1.5vw;
+    font-size: 22px;
 }
 
 .your-account{
@@ -184,7 +189,7 @@
         font-size: large;
     }
     #Logo{
-        font-size: 30px;
+        font-size: 28px;
     }
 }
 

@@ -6,10 +6,12 @@ import Userpost from './Userpost';
 const Profile = (props) => {
   // Assuming posts is defined somewhere in your component's state or props
   const initialposts = [];
+  const initialsearched = [];
   const [posts, setposts] = useState(initialposts);
+  const [search, setsearch] = useState(initialsearched);
   const token = sessionStorage.getItem('token');
   const fetchallposts = async () => {
-    let response = await fetch('http://adarsh826.pythonanywhere.com/api/core/show-post/', {
+    let response = await fetch('http://adarsh826.pythonanywhere.com/api/core/user-posts/', {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -17,6 +19,20 @@ const Profile = (props) => {
     // console.log(json)
     setposts(json);
   }
+
+  const searched_name = sessionStorage.getItem('username')
+
+  const fetchalldata = async () => {
+    let response = await fetch(`http://adarsh826.pythonanywhere.com/api/accounts/search/${searched_name}`, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    let json = await response.json();
+    // console.log(json[0])
+    setsearch(json);
+    
+  }
+
   let navigate = useNavigate();
   const { showalert } = props;
 
@@ -25,9 +41,11 @@ const Profile = (props) => {
     if (sessionStorage.getItem('msg') !== "login success") {
       return navigate('/login');
     }
+    fetchalldata();
     fetchallposts();
+    console.log(search);
 
-  }, [])
+  }, [search])
 
   const clicked = async() =>{
 
@@ -43,21 +61,24 @@ const Profile = (props) => {
       let json = await response.json();
       console.log(json);
     props.showalert('Email has been sent', 'success');
+    
     // navigate("/message")
 }
   return (
+    
     <div className='profile-main-container'>
-      <div className="profile-first-container">
+      {Array.isArray(search) ? (search.map((element)=>(
+      <div className="profile-first-container" key={element.id}>
         <div className="account-image">
           
         </div>
         <div className="profile-details">
           <ul>
             <li>
-              <h1>Shivam Tanwar</h1>
+              <h1>{element.full_name}</h1>
             </li>
             <li>
-              <h3>Frontend Developer</h3>
+              <h3>{element.username}</h3>
             </li>
             <li className='connect-button'>
               <button onClick={clicked}>Connect</button>
@@ -80,18 +101,18 @@ const Profile = (props) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quaerat quasi minima nisi aliquid animi blanditiis nesciunt esse ea, culpa cumque, atque ex nihil labore.
           </div>
         </div>
-      </div>
+      </div>))):('')}
       <h2 id='POSTS'>Posts:</h2>
       <div className="post-secondmain-container">
         <div className="all-posts">
-          {/* {Array.isArray(posts) && posts.length > 0 ? (
+          {Array.isArray(posts) && posts.length > 0 ? (
             posts.map((element) => (
               <Userpost key={element.id} post={element} />
             ))
           ) : (
             <p>No posts available</p>
-          )} */}
-          <Userpost/>
+          )}
+          {/* <Userpost/> */}
           
         </div>
       </div>

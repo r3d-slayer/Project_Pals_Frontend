@@ -45,9 +45,10 @@ const Post = (props) => {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     let json = await response.json();
-    // console.log(json)
-    setposts(json);
+    // console.log(json.payload);
+    setposts(json.payload);
   }
+
   let navigate = useNavigate();
   const { showalert } = props;
 
@@ -56,6 +57,7 @@ const Post = (props) => {
     if (sessionStorage.getItem('msg') !== "login success") {
       return navigate('/login');
     }
+    // console.log(Array.isArray(posts));
     fetchallposts();
 
   }, [])

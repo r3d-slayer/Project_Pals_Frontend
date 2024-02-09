@@ -21,11 +21,11 @@ const Home = () => {
             </li>
             <br />
             <li id='special-message'>
-              Lorem ipsum dolor sit amet.
+              <h5>A catalyst you need in connecting with the opportunities!!</h5>
             </li>
             <br />
             <li>
-              <Link className='getstarted' to={'/signup'}><button>Get Started</button></Link>
+              <Link className='getstarted' to={'/signup'}><button style={{cursor:'pointer'}}>Get Started</button></Link>
             </li>
           </ul>
         </div>

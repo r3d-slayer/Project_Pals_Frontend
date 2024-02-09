@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import Chatapp from './Chatapp';
 import Searchmodal from './Searchmodal';
 import Profile from './Profile';
+import About from './About';
 
 function App() {
   const[alert,setalert] = useState(null);
@@ -45,21 +46,22 @@ function App() {
     <div className="App">
     <Navbar/>
     {/* {alert !== null && <Alert alert={alert} />}  */}
-    {/* {alert ? (
+    {alert ? (
           <Alert alert={alert} />
         ) : (
           <div className="alert-placeholder" style={location.pathname ==='/post'?{height:'40px'}:{display:"none"}}/>
-        )} */}
+        )}
         
 
         <Routes>
           <Route path='*' element={<Error />} />
+          <Route exact path='/aboutus' element={<About />} />
           <Route exact path='/' element={<Home />} />
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/login' element={<Login />} />
-          <Route exact path='/post' element={<Post />} />
+          
           <Route exact path='/user-profile' element={<Profile/>} />
-          {/* <Route exact path='/post' element={<Post showalert={setAlert} />} /> */}
+          <Route exact path='/post' element={<Post showalert={showalert} />} />
           <Route exact path='/message' element={<Chatapp />} />
         </Routes>
     </div>

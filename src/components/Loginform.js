@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './style/Loginform.css'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Loginform = (props) => {
     // const [loggedin, setloggedin] = useState(false);
@@ -31,12 +32,18 @@ const Loginform = (props) => {
             // console.log(credstate.email);
             let data = await response.json();
             // console.log(data);
-            sessionStorage.setItem('token', data.token.access);
             // props.onSubmit();
-            sessionStorage.setItem('msg', data.msg);
-            sessionStorage.setItem('username', data.username);
-            navigate('/post');
-            sessionStorage.setItem('email', credstate.email);
+            if(!data.errors){
+
+                sessionStorage.setItem('token', data.token.access);
+                sessionStorage.setItem('msg', data.msg);
+                sessionStorage.setItem('username', data.username);
+                navigate('/post');
+                sessionStorage.setItem('email', credstate.email);
+            }
+            else{
+                alert('Recheck your email and password');
+            }
         } catch (error) {
             console.log(error.message);
         }
@@ -53,12 +60,12 @@ const Loginform = (props) => {
 
                         <button type="submit" className="loginform-submit">Next</button>
                         <div className="refer">
-                        <a id='refer' href="/signup">
+                        <Link id='refer' to="/signup">
                             <div className="link">
                                 Don't have an account?
-                                <a id='link' to="/signup">Signup</a>
+                                <Link id='link' to="/signup">Signup</Link>
                             </div>
-                        </a>
+                        </Link>
                     </div>
 
                     </div>

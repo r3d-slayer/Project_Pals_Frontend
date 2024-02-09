@@ -39,6 +39,12 @@ const Navbar = () => {
                     setSearchResults([]);
                     setModalResult(false);
                 }
+
+                if(setModalResult){
+                    window.addEventListener('click',()=>{
+                        setModalResult(false);
+                    })
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally {
@@ -48,7 +54,7 @@ const Navbar = () => {
 
         if (searchTerm.trim() !== '') {
             fetchData();
-            console.log(fetchData());
+            // console.log(fetchData());
         } else {
             setSearchResults([]);
             setModalResult(false);
@@ -79,7 +85,7 @@ const Navbar = () => {
                     
                     
                     <li className= 'nav-list'>
-                        <Link to={'/'}>Home</Link>
+                        <Link to={'/aboutus'}>About us</Link>
                     </li>
                     <li className= 'nav-list'>
                         <Link to={'/post'}>Posts</Link>
@@ -103,10 +109,10 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <ul>
-                        <li className='your-account'>
+                        {/*<li className='your-account'>
                             Your account
                             {/* <div className='circle'></div> */}
-                        </li>
+                        {/*</li>*/}
                         <li className='nav-signup'><button className='nav-signup' onClick={logout}>Logout</button></li>
                         </ul>
 
